@@ -44,7 +44,7 @@ clear;
     %Fig. 4, 5  Frégonèse et al. 2013%
     simSize = 100;
     Vgs = linspace(-2,2,simSize);
-    
+  %{  
     for Vdrain_source = [0.1, 0.55, 1]
         Vds = Vdrain_source;
         %Now we ident the simulation of Qch as a function of Vgs
@@ -280,4 +280,5 @@ clear;
         ylabel('Ids [mA/um]');
         
     end
-    %end Fig. 10.3%
+  %}  
+%end Fig. 10.3%
