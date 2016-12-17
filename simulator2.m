@@ -4,7 +4,7 @@ clear;
    
     electronCharge = 1.602e-19; %C
     planckConstantEVs = 6.62607e-34; %J*s
-    fermiVelocity = 10e6; %m/s [30] Thiele
+    fermiVelocity = 106; %m/s [30] Thiele
     beta = ((electronCharge)^3)/(pi*(fermiVelocity*planckConstantEVs/(2*pi))^2); %
     Nf = 0; %m^-2 
     Wox = 1; %Just to ignore it since its always a factor
@@ -19,7 +19,7 @@ clear;
 
 %Begin simulation%
     
-    %Fig. 3  Frégonèse et al. 2013%
+    %Fig. 3  FrÃ©gonÃ¨se et al. 2013%
     simSize = 100;
     for Vgate = -[0.5, 0.8, 1, 1.2, 1.4, 2]
         Vgs = Vgate;
@@ -41,7 +41,7 @@ clear;
     end %Simulation for the figure 3 in paper of Fregonese 
     
     
-    %Fig. 4, 5  Frégonèse et al. 2013%
+    %Fig. 4, 5  FrÃ©gonÃ¨se et al. 2013%
     simSize = 100;
     Vgs = linspace(-2,2,simSize);
     
@@ -82,10 +82,10 @@ clear;
         ylabel('dQch/dVgs [uF/cm^-2]');
        %end Fig 5.
         
-    end %end Fig. 4, 5  Frégonèse et al. 2013%
+    end %end Fig. 4, 5  FrÃ©gonÃ¨se et al. 2013%
    
     
-    %Fig. 7  Frégonèse et al. 2013%
+    %Fig. 7  FrÃ©gonÃ¨se et al. 2013%
     %Redefine useful parameters, Table I
     Nf = 2.3e16; %m^-2 
     Wox = 5e-6; %m
@@ -120,9 +120,9 @@ clear;
         ylabel('Ids [uA]');
        
     end
-    %end Fig. 7  Frégonèse et al. 2013%
+    %end Fig. 7  FrÃ©gonÃ¨se et al. 2013%
     
-    %Fig. 8  Frégonèse et al. 2013%
+    %Fig. 8  FrÃ©gonÃ¨se et al. 2013%
     %Redefine useful parameters Table II
     Nf = 1.26e16; %m^-2 
     Wox = 4e-6; %m
@@ -157,10 +157,10 @@ clear;
         ylabel('Ids [uA/um]');
        
     end
-    %end Fig. 8  Frégonèse et al. 2013%
+    %end Fig. 8  FrÃ©gonÃ¨se et al. 2013%
     
     
-    %Fig. 9, 9.1  Frégonèse et al. 2013%
+    %Fig. 9, 9.1  FrÃ©gonÃ¨se et al. 2013%
     %Redefine useful parameters Table II
     Nf = 2.5e15; %m^-2 
 
@@ -193,9 +193,9 @@ clear;
         xlabel('Vgs [V]');
         ylabel('gm [mS/mm]');
         
-    end %end Fig. 9, 9.1  Frégonèse et al. 2013%
+    end %end Fig. 9, 9.1  FrÃ©gonÃ¨se et al. 2013%
     
-    %Fig. 10.1, 10.2, 10.3  Frégonèse et al. 2013%
+    %Fig. 10.1, 10.2, 10.3  FrÃ©gonÃ¨se et al. 2013%
     %Redefine useful parameters Table II
     Nf = 0; %m^-2 
     Wox = 1; %The value cancels out and we report it per unit of length
