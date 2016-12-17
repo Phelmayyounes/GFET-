@@ -1,3 +1,6 @@
+
+% Function for calculating Ctop
+
 function [Ctop] = calculateCtop(permitivity, thickness)
   e0 = 8.854187817620389e-12; %F/m
  
