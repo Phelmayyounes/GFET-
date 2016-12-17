@@ -4,7 +4,7 @@ clear;
    
     electronCharge = 1.602e-19; %C
     planckConstantEVs = 6.62607e-34; %J*s
-    fermiVelocity = 106; %m/s [30] Thiele
+    fermiVelocity = 10^6; %m/s [30] Thiele
     beta = ((electronCharge)^3)/(pi*(fermiVelocity*planckConstantEVs/(2*pi))^2); %
     Nf = 0; %m^-2 
     Wox = 1; %Just to ignore it since its always a factor
