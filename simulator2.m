@@ -11,7 +11,7 @@ clear;
     u = 0.7; %[m^2/Vs] 
     Er = 3.4; %No unit
     Tox = 8.5e-9; %m 
-    Lox = 1e-6; %m  
+    Lox = 1e-5; %m  
     w = (56e-3)*1.602e-19/(planckConstantEVs/(2*pi)); %frecuency 1/s
     spatialHom = (66.8e-3)*1.6022e-19; %J 
     Npuddle = ((spatialHom)^2)/((((planckConstantEVs/(2*pi))*fermiVelocity))^2*pi);  %1/m^2
@@ -21,7 +21,7 @@ clear;
     
     %Fig. 3  Frégonèse et al. 2013%
     simSize = 100;
-    for Vgate = -[0.2, 0.5, 0.8, 1, 1.2, 1.4]
+    for Vgate = -[0.5, 0.8, 1, 1.2, 1.4, 2]
         Vgs = Vgate;
         %Just an identation to localize the heart of the simulation of each
         %Vgs
