@@ -32,7 +32,7 @@ clear;
           numerator = calculateNumeratorId(electronCharge, u, Wox, Ctop, beta, Npuddle, Nf, Vgs, Vds); %This is the intregral in the numerator of ec 5 
           Id = (calculateId(numerator, denominator));
        %Now we plot 
-        Id = Id*1000/100000;
+        Id = Id*1000/1000000;
         figure (1);
         hold on;
         plot(-Vds, -Id);
