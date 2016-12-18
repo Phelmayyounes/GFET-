@@ -11,7 +11,7 @@ clear;
     u = 0.7; %[m^2/Vs] 
     Er = 3.4; %No unit
     Tox = 8.5e-9; %m 
-    Lox = 1e-5; %m  
+    Lox = 0.5e-6; %m  
     w = (56e-3)*1.602e-19/(planckConstantEVs/(2*pi)); %frecuency 1/s
     spatialHom = (66.8e-3)*1.6022e-19; %J 
     Npuddle = ((spatialHom)^2)/((((planckConstantEVs/(2*pi))*fermiVelocity))^2*pi);  %1/m^2
@@ -46,6 +46,8 @@ clear;
     Vgs = linspace(-2,2,simSize);
   %{  
     for Vdrain_source = [0.1, 0.55, 1]
+      
+     for Vdrain_source = [0.1, 0.55, 1]
         Vds = Vdrain_source;
         %Now we ident the simulation of Qch as a function of Vgs
             %Fig 4.
@@ -58,7 +60,7 @@ clear;
             Eav = calculateEav(Qav, electronCharge, Npuddle, u, Wox, Id, VsatAv);  
             Qch = calculateQch(electronCharge, Wox, Eav, Npuddle, Ctop, beta, Nf, Vds, Vgs);
             %end Fig. 4.
-            
+           
           
             
         %Now we plot the results
@@ -280,5 +282,5 @@ clear;
         ylabel('Ids [mA/um]');
         
     end
-  %}  
+    
 %end Fig. 10.3%
