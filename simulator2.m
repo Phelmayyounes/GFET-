@@ -44,8 +44,6 @@ clear;
     %Fig. 4, 5  Frégonèse et al. 2013%
     simSize = 100;
     Vgs = linspace(-2,2,simSize);
-  %{  
-    for Vdrain_source = [0.1, 0.55, 1]
       
      for Vdrain_source = [0.1, 0.55, 1]
         Vds = Vdrain_source;
@@ -282,5 +280,5 @@ clear;
         ylabel('Ids [mA/um]');
         
     end
-    
+    %}
 %end Fig. 10.3%
