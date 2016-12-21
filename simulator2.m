@@ -89,7 +89,7 @@ clear;
     %Redefine useful parameters, Table I
     Nf = 0; %m^-2 
     Wox = 5e-6; %m
-    u = 0.6570; %[m^2/Vs] 
+    u = 0.14; %[m^2/Vs] 
     Er = 16; %No unit
     Tox = 40e-9; %m 
     Lox = 10e-6; %m  
