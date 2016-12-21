@@ -87,11 +87,11 @@ clear;
     
     %Fig. 7  Frégonèse et al. 2013%
     %Redefine useful parameters, Table I
-    Nf = 2.3e16; %m^-2 
+    Nf = 0; %m^-2 
     Wox = 5e-6; %m
     u = 0.6570; %[m^2/Vs] 
     Er = 16; %No unit
-    Tox = 38.2e-9; %m 
+    Tox = 40e-9; %m 
     Lox = 10e-6; %m  
     w = 280e-3*1.602e-19/(planckConstantEVs/(2*pi)); %frecuency 1/s
     spatialHom = 65e-3*1.602e-19; %J 
@@ -100,9 +100,9 @@ clear;
     
     
     simSize = 100;
-    for Vgate = -[-0.5, 0.1, 0.5,0.75,1]
-        Vgs = Vgate;
-        Vds = linspace(0,1,simSize); %We checked for both signs already and
+    for Vgate = -[1.25, 0.75, 0.25, -0.25, -0.75]
+        Vgs = Vgate; 
+        Vds = -linspace(0,1.5,simSize); %We checked for both signs already and
         %We indent to show that here starts the simulation 
        
           s = sign(Ctop*(Vgs-Vds/2) + electronCharge*Nf);
@@ -115,13 +115,14 @@ clear;
         figure (4);
         hold on;
         Id = Id*10^6;
-        plot(Vds, Id,'.');
+          
+        plot(-Vds, -Id,'.');
         xlabel('Vdsi [V]');
         ylabel('Ids [uA]');
        
     end
     %end Fig. 7  Frégonèse et al. 2013%
-    
+   %{
     %Fig. 8  Frégonèse et al. 2013%
     %Redefine useful parameters Table II
     Nf = 1.26e16; %m^-2 
@@ -159,7 +160,7 @@ clear;
     end
     %end Fig. 8  Frégonèse et al. 2013%
     
-    
+   
     %Fig. 9, 9.1  Frégonèse et al. 2013%
     %Redefine useful parameters Table II
     Nf = 2.5e15; %m^-2 
