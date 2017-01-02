@@ -13,10 +13,7 @@ clear;
     Tox = 8.5e-9; %m 
     Lox = 0.5e-6; %m  
     w = (56e-3)*1.602e-19/(planckConstant/(2*pi)); %frecuency 1/s
-
-    Lox = 1e-5; %m  
-    w = (56e-3)*1.602e-19/(planckConstant/(2*pi)); %frecuency 1/s
-
+    
     spatialHom = (66.8e-3)*1.6022e-19; %J 
     Npuddle = ((spatialHom)^2)/(((planckConstant/(2*pi))*fermiVelocity)^2*pi);  %1/m^2
     Ctop = calculateCtop(Er, Tox); %F/m^2
