@@ -3,18 +3,23 @@ clear;
 %Define useful constants
    
     electronCharge = 1.602e-19; %C
-    planckConstantEVs = 6.62607e-34; %J*s
+    planckConstant = 6.62607e-34; %J*s
     fermiVelocity = 10^6; %m/s [30] Thiele
-    beta = ((electronCharge)^3)/(pi*(fermiVelocity*planckConstantEVs/(2*pi))^2); %
+    beta = ((electronCharge)^3)/(pi*(fermiVelocity*planckConstant/(2*pi))^2); %
     Nf = 0; %m^-2 
     Wox = 1; %Just to ignore it since its always a factor
     u = 0.7; %[m^2/Vs] 
     Er = 3.4; %No unit
     Tox = 8.5e-9; %m 
+<<<<<<< Updated upstream
     Lox = 0.5e-6; %m  
     w = (56e-3)*1.602e-19/(planckConstantEVs/(2*pi)); %frecuency 1/s
+=======
+    Lox = 1e-5; %m  
+    w = (56e-3)*1.602e-19/(planckConstant/(2*pi)); %frecuency 1/s
+>>>>>>> Stashed changes
     spatialHom = (66.8e-3)*1.6022e-19; %J 
-    Npuddle = ((spatialHom)^2)/((((planckConstantEVs/(2*pi))*fermiVelocity))^2*pi);  %1/m^2
+    Npuddle = ((spatialHom)^2)/(((planckConstant/(2*pi))*fermiVelocity)^2*pi);  %1/m^2
     Ctop = calculateCtop(Er, Tox); %F/m^2
 
 %Begin simulation%

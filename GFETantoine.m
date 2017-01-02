@@ -31,7 +31,7 @@ channelLength = 1e-6 % [m]
 channelWidth = 1e-6 %[m]
 
 % Gate volage 
-gateVoltage = 0 % [V]
+gateVoltage = -2 % [V]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DRAIN VOLTAGE ARRAY 
