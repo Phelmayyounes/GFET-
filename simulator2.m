@@ -14,7 +14,7 @@ clear;
     Lox = 0.5e-6; %m  
     w = (56e-3)*1.602e-19/(planckConstant/(2*pi)); %frecuency 1/s
     
-    spatialHom = (66.8e-3)*1.6022e-19; %J 
+    spatialHom = (65e-3)*1.6022e-19; %J 
     Npuddle = ((spatialHom)^2)/(((planckConstant/(2*pi))*fermiVelocity)^2*pi);  %1/m^2
     Ctop = calculateCtop(Er, Tox); %F/m^2
 
@@ -88,14 +88,14 @@ clear;
     
     %Fig. 7  Frégonèse et al. 2013%
     %Redefine useful parameters, Table I
-    Nf = 0; %m^-2 
+    Nf = 0.650; %m^-2 
     Wox = 5e-6; %m
-    u = 0.14; %[m^2/Vs] 
+    u = 0.657; %[m^2/Vs] 
     Er = 16; %No unit
-    Tox = 40e-9; %m 
-    Lox = 10e-6; %m  
-    w = 280e-3*1.602e-19/(planckConstant/(2*pi)); %frecuency 1/s
-    spatialHom = 65e-3*1.602e-19; %J 
+    Tox = 38.2e-9; %m 
+    Lox = 10e-6; %m
+    w = (280e-3)*1.602e-19/(planckConstant/(2*pi)); %frecuency 1/s
+    spatialHom = (65e-3)*(1.602e-19); %J 
     Npuddle = ((spatialHom)^2)/((((planckConstant/(2*pi))*fermiVelocity)^2)*pi); %1/m^2
     Ctop = calculateCtop(Er, Tox); %F/m^2
     
