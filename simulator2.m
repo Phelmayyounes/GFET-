@@ -88,7 +88,7 @@ clear;
     
     %Fig. 7  Frégonèse et al. 2013%
     %Redefine useful parameters, Table I
-    Nf = 0.650; %m^-2 
+    Nf = 2.3e16; %m^-2 
     Wox = 5e-6; %m
     u = 0.657; %[m^2/Vs] 
     Er = 16; %No unit
