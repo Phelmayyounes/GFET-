@@ -16,7 +16,11 @@ clear;
     Er = 3.4; %No unit
     u = 0.7; %[m^2/Vs]
     w = (65e-3)*1.602e-19/(planckConstant/(2*pi)); %frecuency 1/
-    spatialHom = (66.8e-3)*1.6022e-19; %J 
+    spatialHom = (66.8e-3)*1.6022e-19; %J
+    Vgate = [-0.5,-1,-1.5,-2];
+    VdsMin = 0;
+    VdsMax = 0.8;
+    
 
 % Other parameters
     Npuddle = ((spatialHom)^2)/(((planckConstant/(2*pi))*fermiVelocity)^2*pi);  %1/m^2
@@ -25,11 +29,10 @@ clear;
 %Begin simulation%
 
     simSize = 100;
-    for Vgate = [-0.5,-1,-1.5,-2]
-        Vgs = Vgate;
+    for Vgs = Vgate;
         %Just an identation to localize the heart of the simulation of each
         %Vgs
-          Vds = -linspace(0,0.8,simSize);
+          Vds = -linspace(VdsMin,VdsMax,simSize);
           s = sign(Ctop*(Vgs-Vds/2) + electronCharge*Nf);
           Qav = calculateQav(beta, Ctop, Vgs, Vds, electronCharge, Nf, s);
           denominator = calculateDenominatorId(Vds, u, Qav, electronCharge, Npuddle, Lox, w); %this is just the denominator in ec. (5)
