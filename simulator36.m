@@ -14,9 +14,9 @@ clear;
     Tox = 38.2e-9; %m
     Er = 16; %No unit
     u = 0.657; %[m^2/Vs]
-    Nf = 2.3e6; %m^-2
+    Nf = 2.3e16; %m^-2
     w = (280e-3)*1.602e-19/(planckConstant/(2*pi)); %frecuency 1/
-    spatialHom = (66.8e-3)*1.6022e-19; %J 
+    spatialHom = (65e-3)*1.6022e-19; %J 
 
 % Other parameters
     Npuddle = ((spatialHom)^2)/(((planckConstant/(2*pi))*fermiVelocity)^2*pi);  %1/m^2
@@ -36,7 +36,6 @@ clear;
           numerator = calculateNumeratorId(electronCharge, u, Wox, Ctop, beta, Npuddle, Nf, Vgs, Vds); %This is the intregral in the numerator of ec 5 
           Id = (calculateId(numerator, denominator));
        %Now we plot 
-        Id = Id*1000/1000000;
         figure (1);
         hold on;
         plot(-Vds, -Id);
