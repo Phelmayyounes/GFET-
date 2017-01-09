@@ -9,7 +9,7 @@ clear;
     
 %Parameters
 
-    Lox = 0.5e-6; %m  
+    Lox = 0.44e-6; %m  
     Nf = 0; %m^-2
     Wox = 1 ; %m
     Tox = 8.5e-9; %m
@@ -25,11 +25,11 @@ clear;
 %Begin simulation%
 
     simSize = 100;
-    for Vgate = [-0.5,-0.8,-1,-1.2,-1.4,-2]
+    for Vgate = [-0.5,-1,-1.5,-2]
         Vgs = Vgate;
         %Just an identation to localize the heart of the simulation of each
         %Vgs
-          Vds = -linspace(0,1,simSize);
+          Vds = -linspace(0,0.8,simSize);
           s = sign(Ctop*(Vgs-Vds/2) + electronCharge*Nf);
           Qav = calculateQav(beta, Ctop, Vgs, Vds, electronCharge, Nf, s);
           denominator = calculateDenominatorId(Vds, u, Qav, electronCharge, Npuddle, Lox, w); %this is just the denominator in ec. (5)
@@ -39,8 +39,11 @@ clear;
         Id = Id*1000/1000000;
         figure (1);
         hold on;
-        plot(-Vds, -Id);
+        plot(-Vds, -Id,'-','DisplayName', strcat('Vgs = ',num2str(Vgs)));
+        grid on;
         xlabel('-Vdsi [V]');
         ylabel('-Ids [mA/um]');
-    end  
+    end
+    
+   legend('show')
     
