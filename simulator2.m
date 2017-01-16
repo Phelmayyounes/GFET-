@@ -94,16 +94,10 @@ clear;
     Wox = 5e-6; %m
     u = 0.657; %[m^2/Vs] 
     Er = 16; %No unit
-    Tox = 38.2e-9; %m 
-<<<<<<< HEAD
-    Lox = 10e-6; %m  
-    w = (280e-3)*(1.602e-19)/(planckConstant/(2*pi)); %frecuency 1/s or 55 not sure  
-    spatialHom = 65e-3*1.602e-19; %J 
-=======
+    Tox = 38.2e-9; %m
     Lox = 10e-6; %m
     w = (280e-3)*1.602e-19/(planckConstant/(2*pi)); %frecuency 1/s
     spatialHom = (65e-3)*(1.602e-19); %J 
->>>>>>> origin/master
     Npuddle = ((spatialHom)^2)/((((planckConstant/(2*pi))*fermiVelocity)^2)*pi); %1/m^2
     Ctop = calculateCtop(Er, Tox); %F/m^2
     
