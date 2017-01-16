@@ -36,17 +36,18 @@ clear;
         Id = Id*1000/1000000;
         figure (1);
         hold on;
-        plot(-Vds, -Id);
+        plot(-Vds, -Id,'-','DisplayName', strcat('Vgs = ',num2str(Vgs)));
         xlabel('-Vdsi [V]');
         ylabel('-Ids [mA/um]');
     end %Simulation for the figure 3 in paper of Fregonese 
+    legend('show')
     
     
     %Fig. 4, 5  Frégonèse et al. 2013%
     simSize = 100;
     Vgs = linspace(-2,2,simSize);
       
-     for Vdrain_source = [0.1, 0.55, 1]
+   for Vdrain_source = [0.1, 0.55, 1]
         Vds = Vdrain_source;
         %Now we ident the simulation of Qch as a function of Vgs
             %Fig 4.
@@ -66,7 +67,7 @@ clear;
         figure(2);
         hold on;
         Qch = (Qch/(Lox*100*100*electronCharge))*10^-12; %Wox is not necessary since it cancells during computations 
-        plot(Vgs, Qch, '.','markersize',5); 
+        plot(Vgs, Qch ,'-','DisplayName', strcat('Vds = ',num2str(Vds)));
         xlabel('Vgsi [V]');
         ylabel('Qch/L*W*q*10e12 [cm^-2]');
         %end Fig. 4
@@ -78,23 +79,24 @@ clear;
         figure(3);
         hold on;
         %derQch = derQch; %uF/cm^-2
-        plot(Vgs, -derQch, '.','markersize',5); 
+        plot(Vgs, -derQch ,'-','DisplayName', strcat('Vds = ',num2str(Vds)));
         xlabel('Vgsi [V]');
         ylabel('dQch/dVgs [uF/cm^-2]');
-       %end Fig 5.
         
-    end %end Fig. 4, 5  Frégonèse et al. 2013%
-   
+         %end Fig 5.
+        
+   end %end Fig. 4, 5  Frégonèse et al. 2013%
+   legend('show')
     
-    %Fig. 7  Frégonèse et al. 2013%
+   %Fig. 7  Frégonèse et al. 2013%
     %Redefine useful parameters, Table I
-    Nf = 0; %m^-2 
+    Nf = 2.3e16; %m^-2 
     Wox = 5e-6; %m
-    u = 0.14; %[m^2/Vs] 
+    u = 0.657; %[m^2/Vs] 
     Er = 16; %No unit
-    Tox = 40e-9; %m 
+    Tox = 38.2e-9; %m 
     Lox = 10e-6; %m  
-    w = 280e-3*1.602e-19/(planckConstant/(2*pi)); %frecuency 1/s
+    w = (280e-3)*(1.602e-19)/(planckConstant/(2*pi)); %frecuency 1/s or 55 not sure  
     spatialHom = 65e-3*1.602e-19; %J 
     Npuddle = ((spatialHom)^2)/((((planckConstant/(2*pi))*fermiVelocity)^2)*pi); %1/m^2
     Ctop = calculateCtop(Er, Tox); %F/m^2
@@ -103,7 +105,7 @@ clear;
     simSize = 100;
     for Vgate = -[1.25, 0.75, 0.25, -0.25, -0.75]
         Vgs = Vgate; 
-        Vds = -linspace(0,1.5,simSize); %We checked for both signs already and
+        Vds = linspace(0,1.5,simSize); %We checked for both signs already and
         %We indent to show that here starts the simulation 
        
           s = sign(Ctop*(Vgs-Vds/2) + electronCharge*Nf);
@@ -116,14 +118,14 @@ clear;
         figure (4);
         hold on;
         Id = Id*10^6;
-          
-        plot(-Vds, -Id,'.');
+        plot(Vds, Id,'-','DisplayName', strcat('Vgs = ',num2str(Vgs)));  
         xlabel('Vdsi [V]');
         ylabel('Ids [uA]');
        
     end
+    legend('show')
     %end Fig. 7  Frégonèse et al. 2013%
-   %{
+   
     %Fig. 8  Frégonèse et al. 2013%
     %Redefine useful parameters Table II
     Nf = 1.26e16; %m^-2 
@@ -132,16 +134,16 @@ clear;
     Er = 3.9; %No unit
     Tox = 28e-9; %m 
     Lox = 2.94e-6; %m  
-    w = 370e-3*1.602e-19/(planckConstantEVs/(2*pi)); %frecuency 1/s
+    w = 370e-3*1.602e-19/(planckConstant/(2*pi)); %frecuency 1/s
     spatialHom = 65e-3*1.602e-19; %J 
-    Npuddle = ((spatialHom)^2)/((((planckConstantEVs/(2*pi))*fermiVelocity)^2)*pi); %1/m^2
+    Npuddle = ((spatialHom)^2)/((((planckConstant/(2*pi))*fermiVelocity)^2)*pi); %1/m^2
     Ctop = calculateCtop(Er, Tox); %F/m^2
     
     
     simSize = 100;
     for Vgate = 0:0.5:3
-        Vgs = Vgate;
-        Vds = linspace(0,1,simSize); %We checked for both signs already and
+        Vgs = -Vgate;
+        Vds = linspace(0,3,simSize); %We checked for both signs already and
         %We indent to show that here starts the simulation 
        
           s = sign(Ctop*(Vgs-Vds/2) + electronCharge*Nf);
@@ -153,12 +155,13 @@ clear;
         %Now we start the plot
         figure (5);
         hold on;
-        Id = Id*10^6/(Lox*10^6); %We can also divide by Wox instead of Lox, to get the correct units and correct values
-        plot(Vds, Id,'.');
+        Id = Id*10^6/(Wox*10^6); %We can also divide by Wox instead of Lox, to get the correct units and correct values
+        plot(Vds, Id,'-','DisplayName', strcat('Vgs = ',num2str(Vgs)));
         xlabel('Vdsi [V]');
         ylabel('Ids [uA/um]');
        
     end
+    legend('show')
     %end Fig. 8  Frégonèse et al. 2013%
     
    
@@ -183,20 +186,24 @@ clear;
         %Now we plot the results
         figure(6);
         hold on;
-        Ids = Id*10^6/(Lox*10^6); %We could divide per Wox if that fits the values, since the author did not specify it
-        plot(Vgs, Ids, '.','markersize',5); 
+        Ids = Id*10^6/(Wox*10^6); %We could divide per Wox if that fits the values, since the author did not specify it 
+        plot(Vgs, Ids);
         xlabel('Vgs [V]');
         ylabel('Ids [uA/um]');
         
-        gm = Ids./Vgs; %Transconductance, we are not sure if this is the formula
+        %gm = Ids./Vgs; %Transconductance, we are not sure if this is the formula
+        gm = diff(Ids)*100/4;  %the factor 4/100 is due to the step size of Vgs
+        gm(100) = gm(99); %to make the vector of the correct size to be plot
+        
+        
         figure(7);
         hold on;
-        plot(Vgs, gm, '.','markersize',5); 
+        plot(Vgs, gm,'-','DisplayName', strcat('Vds = ',num2str(Vds)));
         xlabel('Vgs [V]');
         ylabel('gm [mS/mm]');
         
     end %end Fig. 9, 9.1  Frégonèse et al. 2013%
-    
+    legend('show')
     %Fig. 10.1, 10.2, 10.3  Frégonèse et al. 2013%
     %Redefine useful parameters Table II
     Nf = 0; %m^-2 
@@ -205,9 +212,9 @@ clear;
     Er = 3.5; %No unit
     Tox = 8.5e-9; %m 
     Lox = 440e-9; %m  
-    w = 56e-3*1.602e-19/(planckConstantEVs/(2*pi)); %frecuency 1/s
+    w = 56e-3*1.602e-19/(planckConstant/(2*pi)); %frecuency 1/s
     spatialHom = 66.8e-3*1.602e-19; %J 
-    Npuddle = ((spatialHom)^2)/((((planckConstantEVs/(2*pi))*fermiVelocity)^2)*pi); %1/m^2
+    Npuddle = ((spatialHom)^2)/((((planckConstant/(2*pi))*fermiVelocity)^2)*pi); %1/m^2
     Ctop = calculateCtop(Er, Tox); %F/m^2
     
     %Fig. 10.1 
@@ -227,11 +234,12 @@ clear;
         figure (8);
         hold on;
         Id = Id*10^3/(10^6); 
-        plot(Vds, Id,'.');
+        plot(Vds, Id,'-','DisplayName', strcat('Vgs = ',num2str(Vgs)));
         xlabel('Vdsi [V]');
         ylabel('Ids [mA/um]');
         
     end
+    legend('show')
     %end Fig. 10.1%
     
     %Fig. 10.2
@@ -252,11 +260,12 @@ clear;
         figure (9);
         hold on;
         Id = Id*10^3/(10^6); 
-        plot(Vds, Id,'.');
+        plot(Vds, Id,'-','DisplayName', strcat('Vgs = ',num2str(Vgs)));
         xlabel('Vdsi [V]');
         ylabel('Ids [mA/um]');
         
     end
+    legend('show')
     %end Fig. 10.2%
     
     %Fig. 10.3
@@ -277,10 +286,11 @@ clear;
         figure (10);
         hold on;
         Id = Id*10^3/(10^6); 
-        plot(Vds, Id,'.');
+        plot(Vds, Id,'-','DisplayName', strcat('Vgs = ',num2str(Vgs)));
         xlabel('Vdsi [V]');
         ylabel('Ids [mA/um]');
         
     end
+    legend('show')
     %}
 %end Fig. 10.3%
