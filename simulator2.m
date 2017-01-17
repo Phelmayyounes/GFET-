@@ -22,11 +22,11 @@ clear;
     
     %Fig. 3  Frégonèse et al. 2013%
     simSize = 100;
-    for Vgate = -[0.5, 0.8, 1, 1.2, 1.4, 2]
+    for Vgate = [0.5, 0.8, 1, 1.2, 1.4, 2]
         Vgs = Vgate;
         %Just an identation to localize the heart of the simulation of each
         %Vgs
-          Vds = -linspace(0,0.99,simSize);
+          Vds = linspace(0,0.99,simSize);
           s = sign(Ctop*(Vgs-Vds/2) + electronCharge*Nf);
           Qav = calculateQav(beta, Ctop, Vgs, Vds, electronCharge, Nf, s);
           denominator = calculateDenominatorId(Vds, u, Qav, electronCharge, Npuddle, Lox, w); %this is just the denominator in ec. (5)
@@ -36,9 +36,9 @@ clear;
         Id = Id*1000/1000000;
         figure (1);
         hold on;
-        plot(-Vds, -Id,'-','DisplayName', strcat('Vgs = ',num2str(Vgs)));
-        xlabel('-Vdsi [V]');
-        ylabel('-Ids [mA/um]');
+        plot(Vds, Id,'-','DisplayName', strcat('Vgs = ',num2str(Vgs)));
+        xlabel('Vdsi [V]');
+        ylabel('Ids [mA/um]');
     end %Simulation for the figure 3 in paper of Fregonese 
     legend('show')
     
@@ -90,7 +90,7 @@ clear;
     
    %Fig. 7  Frégonèse et al. 2013%
     %Redefine useful parameters, Table I
-    Nf = 2.3e16; %m^-2 
+    Nf = -2.3e16; %m^-2 
     Wox = 5e-6; %m
     u = 0.657; %[m^2/Vs] 
     Er = 16; %No unit
@@ -105,7 +105,7 @@ clear;
     simSize = 100;
     for Vgate = -[1.25, 0.75, 0.25, -0.25, -0.75]
         Vgs = Vgate; 
-        Vds = linspace(0,1.5,simSize); %We checked for both signs already and
+        Vds = -linspace(0,1.5,simSize); %We checked for both signs already and
         %We indent to show that here starts the simulation 
        
           s = sign(Ctop*(Vgs-Vds/2) + electronCharge*Nf);
@@ -118,9 +118,9 @@ clear;
         figure (4);
         hold on;
         Id = Id*10^6;
-        plot(Vds, Id,'-','DisplayName', strcat('Vgs = ',num2str(Vgs)));  
-        xlabel('Vdsi [V]');
-        ylabel('Ids [uA]');
+        plot(-Vds, -Id,'-','DisplayName', strcat('Vgs = ',num2str(Vgs)));  
+        xlabel('-Vdsi [V]');
+        ylabel('-Ids [uA]');
        
     end
     legend('show')
@@ -128,7 +128,7 @@ clear;
    
     %Fig. 8  Frégonèse et al. 2013%
     %Redefine useful parameters Table II
-    Nf = 1.26e16; %m^-2 
+    Nf = -1.26e16; %m^-2 
     Wox = 4e-6; %m
     u = 0.6800; %[m^2/Vs] 
     Er = 3.9; %No unit
@@ -142,7 +142,7 @@ clear;
     
     simSize = 100;
     for Vgate = 0:0.5:3
-        Vgs = -Vgate;
+        Vgs = Vgate;
         Vds = linspace(0,3,simSize); %We checked for both signs already and
         %We indent to show that here starts the simulation 
        
@@ -192,7 +192,7 @@ clear;
         ylabel('Ids [uA/um]');
         
         %gm = Ids./Vgs; %Transconductance, we are not sure if this is the formula
-        gm = diff(Ids)*100/4;  %the factor 4/100 is due to the step size of Vgs
+        gm = diff(Ids)*100/3;  %the factor 3/100 is due to the step size of Vgs
         gm(100) = gm(99); %to make the vector of the correct size to be plot
         
         
